@@ -1,7 +1,7 @@
 import "./styles.css";
 import Counter from "./Counter";
-import React, { useState } from "react";
-
+import React from "react";
+import { useSelector } from "react-redux";
 const employees = [
   {
     id: 1,
@@ -21,13 +21,13 @@ const employees = [
   }
 ];
 export default function App() {
-  const [count, setCount] = useState(0);
+  const count = useSelector((state) => state.counter.count);
 
   return (
     <div className="App">
       <h1>Total votes: {count}</h1>
       {employees.map((e) => (
-        <Counter key={e.id} name={e.name} count={count} setCount={setCount} />
+        <Counter key={e.id} name={e.name} />
       ))}
     </div>
   );
